@@ -11,27 +11,18 @@ namespace TextRPG2
         Archer= 2,
         Mage = 3
     }
-    class Player
+    class Player : Creature
     {
         protected PlayerType type = PlayerType.None;
-        protected int hp = 0;
-        protected int attack = 0;
 
         // 인자 있는 버전을 만드는 순간 인자 없는 생성자 사용 불가.
         // 생성시 꼭 타입이 있어야 할 경우.
-        protected Player(PlayerType type)
+        protected Player(PlayerType type) : base(CreatureType.Player)
         {
             this.type = type;
         }
 
-        public void SetInfo(int hp, int attack)
-        {
-            this.hp = hp;
-            this.attack = attack;
-        }
-
-        public int GetHP() { return hp; }
-        public int GetAttack() { return attack; }
+        public PlayerType GetPlayerType() { return type;}
     }
     class knight : Player
     {
