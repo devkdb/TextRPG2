@@ -6,15 +6,17 @@ namespace TextRPG2  // Namespace 동일하다는 가정하에. 클래스 문서 
     class Program
     {
         // 객체지향 프로그래밍
-        // 1. 파일 분리.
+        // 1. 파일 분리. 클래스(객체) 생성.
+        // 보이는 클래스: 생물, 몬스터, 플레이어
+        // 게임에서 보이진 않지만 존재하는 클래스: 게임 스테이지나 로비 등
+        //                                         공간을 관리하는....
+
         static void Main(string[] args)
         {
-            Player player = new knight();
-            Monster monster = new Orc();
+            Game game = new Game();
 
-            // 플레이어가 몬스터 때림.
-            int damage = player.GetAttack();
-            monster.OnDamaged(damage);
+            while(true)
+                game.Process();
         }
     }
 }
