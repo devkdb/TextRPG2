@@ -7,7 +7,10 @@ namespace TextRPG2
         static void Main(string[] args)
         {
             testArray ArrayTest = new testArray();
-            ArrayTest.RunTestArray();
+            ArrayTest.Run();
+
+            ArrayPractice arrayPractice = new ArrayPractice();
+            arrayPractice.Run();
         }
     }
 }

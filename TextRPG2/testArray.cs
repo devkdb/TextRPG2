@@ -19,7 +19,7 @@ namespace TextRPG2
 
         }
 
-        public void RunTestArray()
+        public void Run()
         {
             int a; // 일종의 바구니. a라는 이름의. int 크기만큼의.
 
@@ -52,6 +52,99 @@ namespace TextRPG2
             {
                 Console.WriteLine(score);
             }
+        }
+    }
+
+    // 프로그램 실행 했는데, 무한루프 돌고 있다던지 하면. 멈춤 버튼을 클릭하면
+    // 코드상의 해당 지점을 가리킨다. 디버깅 팁. j++ 이 i++로 잘못 쓰임.
+    class ArrayPractice
+    {
+        static int GetHighesScore(int[] scores)
+        {
+            // 가장 큰 숫자 기억
+            int maxValue = 0;
+
+            foreach (int score in scores)
+            {
+                if (score > maxValue)
+                    maxValue = score;
+            }
+            return maxValue;
+        }
+
+        // 평균
+        static int GetAverageScore(int[] scores)
+        {
+            if (scores.Length == 0)
+                return 0;
+
+            int sum = 0;
+
+            foreach(int score in scores)
+            {
+                sum += score;
+            }
+
+            // 75 / 2 = 37.5  --> 정수연산이기에 0.5 짤림. 37 리턴.
+            return sum / scores.Length;
+        }
+
+        // 내가 찾고 싶은 값의 인덱스 리턴.
+        static int GetindexOf(int[] scores, int value)
+        {
+            for(int i= 0; i < scores.Length; i++)
+            {
+                if(scores[i] == value)
+                    return i;
+            }
+
+            // 찾지 못하면 -1 return.
+            return -1;
+        }
+
+        // 복잡한 구현. 말로 잘 설명해본다. 그것을 코드로 구현.
+        static void Sort(int[] scores)
+        {
+            // 1. 제일 작은 숫자를 찾는다.
+            // 2. 0번째 인덱스와 교체. 시작위치에.
+            // 3. 그다음 시작위치~마지막 인덱스 체크. 제일 작은 숫자 교체.
+
+            for (int i = 0; i < scores.Length; i++)
+            {
+                // 1. i ~ [scores.Length-1] 제일 작은 숫자가 있는 index를 찾는다.
+                int minIndex = i;
+                for (int j = i; j < scores.Length; j++)
+                {
+                    if (scores[j] < scores[minIndex])
+                        minIndex = j;
+                }
+
+                // swap
+                int temp = scores[i];
+                scores[i] = scores[minIndex];
+                scores[minIndex] = temp;
+
+                Console.WriteLine($"scores[{i}] = {scores[i]}");
+            }
+        }
+
+        public void Run()
+        {
+            int[] scores = new int[5] { 40, 30, 10, 20, 50 };
+
+            int highestScore = GetHighesScore(scores);
+            Console.WriteLine($"highestScore = {highestScore}");
+
+            int averageScore = GetAverageScore(scores);
+            Console.WriteLine($"averageScore = {averageScore}");
+
+            int index = GetindexOf(scores, 20);
+            Console.WriteLine($"index = {index}");
+
+            index = GetindexOf(scores, 15);
+            Console.WriteLine($"index = {index}");
+
+            Sort(scores);
         }
     }
 }
