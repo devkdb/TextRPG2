@@ -6,7 +6,7 @@ namespace TextRPG2
     {
         static void Main(string[] args)
         {
-/*            testArray ArrayTest = new testArray();
+/*          testArray ArrayTest = new testArray();
             ArrayTest.Run();
 
             ArrayPractice arrayPractice = new ArrayPractice();
@@ -14,6 +14,12 @@ namespace TextRPG2
 */
             MultidimensionalArray multidimensionalArray = new MultidimensionalArray();
             multidimensionalArray.Run();
+
+            TestList testList = new TestList();
+            testList.Run();
+
+            TestDictionary testDic = new TestDictionary();
+            testDic.Run();
         }
     }
 }
